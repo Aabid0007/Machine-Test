@@ -9,13 +9,16 @@ connectDb()
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors({ origin: 'https://deepnetsoft-06tq.onrender.com',credentials: true }));
+app.use(cors({ origin: 'https://deepnetsoft-06tq.onrender.com' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/category", require("./routes/category.route"));
 app.use("/api/products", require("./routes/product.route"));
 
-
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 
 
