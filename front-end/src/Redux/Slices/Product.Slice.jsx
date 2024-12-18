@@ -5,7 +5,7 @@ import axios from "axios";
 // get all products
 export const getProducts = createAsyncThunk('getProducts', async ({ categoryId }) => {
     try {
-        const response = await axios.get(`https://deepnetsoft-06tq.onrender.com/api/products/?categoryId=${categoryId}`);
+        const response = await axios.get(`https://deepnetsoft-backend-byf7.onrender.com/api/products/?categoryId=${categoryId}`);
         return response.data.data;
     } catch (error) {
         throw error;
@@ -15,7 +15,7 @@ export const getProducts = createAsyncThunk('getProducts', async ({ categoryId }
 // create products
 export const createProduct = createAsyncThunk('createProduct', async (data) => {
     try {
-        const response = await axios.post(`https://deepnetsoft-06tq.onrender.com/api/products`, data);
+        const response = await axios.post(`https://deepnetsoft-backend-byf7.onrender.com/api/products`, data);
         return response.data;
     } catch (error) {
         throw error;
@@ -25,7 +25,7 @@ export const createProduct = createAsyncThunk('createProduct', async (data) => {
 // productId fetching
 export const getProductById = createAsyncThunk("getProductById", async (id) => {
     try {
-        const response = await axios.get(`https://deepnetsoft-06tq.onrender.com/api/products/${id}`);
+        const response = await axios.get(`https://deepnetsoft-backend-byf7.onrender.com/api/products/${id}`);
         return response.data;
     } catch (error) {
         throw error;
@@ -35,7 +35,7 @@ export const getProductById = createAsyncThunk("getProductById", async (id) => {
 // update product
 export const editProduct = createAsyncThunk("editProduct", async ({ id, data }) => {
     try {
-        const response = await axios.put(`https://deepnetsoft-06tq.onrender.com/api/products/${id}`, data);
+        const response = await axios.put(`https://deepnetsoft-backend-byf7.onrender.com/api/products/${id}`, data);
         return response.data;
     } catch (error) {
         throw error;
@@ -45,7 +45,7 @@ export const editProduct = createAsyncThunk("editProduct", async ({ id, data }) 
 // Delete product
 export const deleteProduct = createAsyncThunk("deleteProduct", async (id) => {
     try {
-        const response = await axios.delete(`https://deepnetsoft-06tq.onrender.com/api/products/${id}`);
+        const response = await axios.delete(`https://deepnetsoft-backend-byf7.onrender.com/api/products/${id}`);
         console.log(response.data);
         return id;
     } catch (error) {
