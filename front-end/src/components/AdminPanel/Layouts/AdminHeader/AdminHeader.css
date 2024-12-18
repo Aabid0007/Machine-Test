@@ -1,0 +1,8 @@
+.admin_header_section{
+    padding: 27px 0;
+    display: flex;
+    justify-content: center;
+}
+.admin_header_section button{
+    padding: 10px 24px;
+}

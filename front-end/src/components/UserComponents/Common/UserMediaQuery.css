@@ -1,0 +1,388 @@
+.hamburger {
+    display: none;
+}
+
+.footer_text_mobile_screen {
+    display: none;
+}
+
+/* first_break_point */
+@media only screen and (max-width:1024px) {
+
+    /* products section*/
+    .heading {
+        padding: 0px 140px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .right_side_img {
+        display: none;
+    }
+
+    .left_side_img {
+        display: none;
+    }
+
+    .heading h1 {
+        font-size: 44px;
+        font-weight: 600;
+        line-height: 52px;
+        letter-spacing: 0.03em;
+        max-width: 320px;
+    }
+
+    .product_section {
+        padding: 90px 7px;
+    }
+
+    .product_list {
+        padding: 70px 28px 112px;
+    }
+
+    .left_side_top_img {
+        display: flex;
+        top: -26px;
+        left: -31px;
+        justify-content: flex-end;
+    }
+
+    .left_side_top_img img {
+        width: 75%;
+    }
+
+    .right_side_bottom_img {
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .right_side_bottom_img img {
+        width: 75%;
+    }
+
+    /* contact details section, before footer */
+    .contacts_section {
+        grid-template-columns: 1fr;
+        gap: 26px;
+
+    }
+
+    .contact_card:nth-child(2) {
+        order: -1;
+    }
+}
+
+/* Second_break_point */
+@media only screen and (max-width:767px) {
+    .hamburger {
+        display: block;
+    }
+
+    header {
+        position: fixed;
+        z-index: 99;
+        width: 100%;
+        height: 75px;
+    }
+
+    .Logo_heading {
+        display: none;
+    }
+
+    .Main_Heading {
+        padding: 20px 0;
+    }
+
+    .Logo {
+        width: 100%;
+    }
+
+    .Logo_image img {
+        width: 68px;
+        height: 56px;
+    }
+
+    .mobile_menu {
+        display: block;
+    }
+
+    .main_banner_img {
+        display: none;
+    }
+
+    .main_banner_mobile_bg {
+        background-image: url('../../../assets/Rectangle 103 crop.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        min-height: 101%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .banner_section {
+        padding: 134px 0 75px;
+    }
+
+    .banner_section h1 {
+        font-size: 55px;
+        line-height: 59.28px;
+    }
+
+    .banner_section p {
+        font-size: 16px;
+        line-height: 19.39px;
+        max-width: 390px;
+    }
+
+    .Header_section nav {
+        display: none;
+    }
+
+    .category_section {
+        padding: 26px 0;
+    }
+
+    .category_section span {
+        padding: 10px 30px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 17.71px;
+    }
+
+    .category_slide_btn {
+        padding: 10px 17px;
+    }
+
+    .heading {
+        padding: 0px 50px;
+    }
+
+    .heading h1 {
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 36px;
+        max-width: 162px;
+    }
+
+    .heading::before {
+        width: 60px;
+    }
+
+    .heading::after {
+        width: 60px;
+    }
+
+    .left_side_top_img img {
+        width: 55%;
+    }
+
+    .left_side_top_img {
+        left: -12px;
+        justify-content: flex-start;
+    }
+
+    .right_side_bottom_img img {
+        width: 55%;
+    }
+
+    .product_list {
+        padding: 52px 15px 78px;
+    }
+
+    .product_text h3 {
+        font-size: 18px;
+        line-height: 32.53px;
+    }
+
+    .product_name::after {
+        height: 2px;
+    }
+
+    .product_text span {
+        font-size: 18px;
+        line-height: 32.53px;
+    }
+
+    .product_section {
+        padding: 50px 7px;
+    }
+
+    .product_text p {
+        font-size: 12px;
+        line-height: 18.82px;
+        max-width: 381px;
+    }
+
+    .footer_text_mobile_screen {
+        display: block;
+    }
+
+    .footer_text_large_screen {
+        display: none;
+    }
+
+    .footer_section {
+        flex-direction: column;
+        padding: 16px 0;
+    }
+
+    .footer_section span {
+        font-size: 13px;
+        line-height: 19.8px;
+    }
+
+}
+
+/* Third break point */
+@media only screen and (max-width:420px) {
+
+    .heading {
+        padding: 0px 38px;
+    }
+
+    .heading h1 {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 28px;
+        max-width: 103px;
+    }
+
+    .heading::before {
+        width: 40px;
+        height: 3px;
+    }
+
+    .heading::after {
+        width: 40px;
+        height: 3px;
+    }
+
+    .banner_section {
+        padding: 125px 0 62px;
+    }
+
+    .banner_section h1 {
+        font-size: 50px;
+        line-height: 54.28px;
+    }
+
+    .banner_section p {
+        font-size: 12px;
+        line-height: 19.39px;
+        max-width: 288px;
+    }
+
+    .product_list {
+        padding: 32px 10px 55px;
+        gap: 28px;
+    }
+
+    .left_side_top_img img {
+        width: 38%;
+    }
+
+    .right_side_bottom_img img {
+        width: 38%;
+    }
+
+    .left_side_top_img {
+        top: -15px;
+        left: 0px;
+    }
+
+    .category_section span {
+        padding: 7px 27px;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 13.71px;
+    }
+
+    .category_section {
+        padding: 22px 0;
+    }
+
+    .category_slide_btn {
+        padding: 9px 7px;
+    }
+
+    .category_card {
+        gap: 7px;
+    }
+
+    .left_side_top_img img {
+        width: 36%;
+    }
+
+    .right_side_bottom_img img {
+        width: 36%;
+    }
+
+    .products {
+        gap: 0;
+    }
+
+    .product_section {
+        padding: 48px 7px;
+    }
+
+    .product_text h3 {
+        font-size: 14px;
+        line-height: 32.53px;
+    }
+
+    .product_name::after {
+        height: 2px;
+    }
+
+    .product_text span {
+        font-size: 14px;
+        line-height: 32.53px;
+    }
+
+    .product_text {
+        gap: 2px;
+        min-height: 80px;
+    }
+
+    .product_text p {
+        font-size: 9px;
+        line-height: 14.82px;
+        max-width: 242px;
+    }
+
+    .logo_text {
+        font-size: 30px;
+        line-height: 44.46px;
+    }
+
+    .contacts_section {
+        gap: 20px;
+    }
+
+    .contact_card.text {
+        gap: 38px;
+    }
+
+    .contact_card {
+        gap: 10px;
+    }
+
+    .logo_img img {
+        width: 68px;
+        height: 56px;
+        top: -28px;
+    }
+
+    .footer_section span {
+        font-size: 9px;
+        line-height: 16.8px;
+    }
+}

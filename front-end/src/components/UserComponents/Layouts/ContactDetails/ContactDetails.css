@@ -1,0 +1,107 @@
+.contact_details {
+    background-color: black;
+    position: relative;
+    color: #fff;
+}
+
+.contacts_section {
+    padding: 50px 0;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.contact_card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    position: relative;
+}
+
+.demo_icon {
+    color: rgba(197, 160, 89, 1) !important;
+}
+
+.contact_logo_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact_card.text {
+    padding: 10px 0;
+    gap: 46px;
+}
+
+.contact_card_header {
+    font-family: Oswald;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23.71px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: rgba(7, 150, 239, 1);
+
+}
+
+.contact_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.contact_card_text {
+    font-family: Oswald;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.71px;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 300;
+    color: grey;
+    max-width: 173px;
+}
+
+
+.contact_card_text span {
+    color: grey;
+
+}
+
+.logo_img {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.logo_img img {
+    width: 80px;
+    height: 70px;
+    position: absolute;
+    top: -36px;
+}
+
+.logo_text {
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 51.87px;
+    letter-spacing: 0.03em;
+}
+
+.icon {
+    font-size: 10px;
+    background: transparent !important;
+}
+.location_icon{
+    align-items: baseline;
+}

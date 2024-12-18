@@ -1,0 +1,21 @@
+.form_product_section{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    position: absolute;
+}
+
+.Add_product_Form {
+    width: 337px;
+    z-index: 99;
+    overflow-y: scroll;
+    height: 64vh;
+}
+.add_product_section{
+    color: black;
+    background-color: #fff;
+    padding: 7px 20px 35px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}

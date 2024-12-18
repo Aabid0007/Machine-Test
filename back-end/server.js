@@ -9,10 +9,11 @@ connectDb()
 const app = express();
 const port = process.env.PORT || 3000;
 
-
+app.use(cors({ origin: 'http://localhost:5173',credentials: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/category", require("./routes/category.route"));
-app.use("/api/product", require("./routes/product.route"));
+app.use("/api/products", require("./routes/product.route"));
 
 
 

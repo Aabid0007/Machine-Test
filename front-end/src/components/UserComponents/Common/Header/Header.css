@@ -1,0 +1,89 @@
+header {
+    background-color: #121618;
+}
+
+.Main_Heading {
+    display: flex;
+    position: relative;
+    padding: 56px 0 10px;
+    justify-content: flex-end;
+    color: #fff;
+}
+
+.Logo_image img {
+    width: 86px;
+    height: 76px;
+    /* top: 60px;
+    left: 168px;
+    gap: 0px;
+    opacity: 0px; */
+}
+
+.Logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    gap: 12px;
+    z-index: 1;
+}
+
+.Logo_heading {
+    display: flex;
+    flex-direction: column;
+}
+
+.Logo_heading span {
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 51.87px;
+    letter-spacing: 0.03em;
+
+}
+
+.deep_name_color {
+    color: #0796ef;
+}
+
+.soft_name_color {
+    color: #857878;
+}
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    align-items: center;
+}
+
+nav li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.71px;
+    letter-spacing: 0.03em;
+}
+nav li:hover{
+    color: #0796ef;
+}
+.Admin_panel_btn{
+    background-color: black;
+    border: 1px solid #0796ef;
+    padding: 3px 5px;
+    cursor: pointer;
+    color: #fff;
+}
+.Admin_panel_btn:hover{
+    color: #fff !important;
+    background-color: #0796ef;
+}
+.hamburger span{
+    font-size: 1.8rem;
+}
+.hamburger{
+    background: none;
+    border: none;
+    color: rgba(133, 120, 120, 1);
+    cursor: pointer;
+}

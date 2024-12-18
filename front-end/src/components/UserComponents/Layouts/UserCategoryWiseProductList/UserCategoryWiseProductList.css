@@ -1,0 +1,178 @@
+.category_wise_product {
+    position: relative;
+}
+
+.product_section_bg_img {
+    background-image: url('../../../../assets/Rectangle 116.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 101%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.left_side_img {
+    background-image: url('../../../../assets/Frame.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.right_side_img {
+    background-image: url('../../../../assets/Frame (1).png');
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.product_section {
+    padding: 138px 7px;
+    position: relative;
+    color: #fff;
+}
+
+.product_list {
+    border: 1px solid rgba(255, 255, 255, 1);
+    padding: 70px 81px 99px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 44px;
+    min-height: 297px;
+    position: relative;
+}
+
+.left_side_top_img{
+    position: absolute;
+    top: -152px;
+    left: -55px;
+}
+
+.right_side_bottom_img {
+    position: absolute;
+    bottom: -26px;
+    right: -1px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+}
+
+.heading h1{
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 74.1px;
+    letter-spacing: 0.03em;
+    text-shadow: 4px 3px 0px rgba(128, 0, 32, 1);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.heading::after {
+    content: " ";
+    width: 115px;
+    height: 4px;
+    background-color: rgba(133, 120, 120, 1);
+}
+
+.heading::before {
+    content: " ";
+    width: 115px;
+    height: 4px;
+    background-color: rgba(133, 120, 120, 1);
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 36px 50px;
+}
+
+.product_text {
+    min-height: 103px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product_text h3 {
+    font-family: Oswald;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 38.53px;
+    letter-spacing: 0.03em;
+
+}
+
+.product_text p {
+    font-family: "Kelly Slab", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.82px;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 500px;
+    
+}
+
+.product_text span {
+    font-family: Oswald;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 38.53px;
+    letter-spacing: 0.03em;
+}
+
+.product_names {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product_name {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between; 
+    width: 100%;
+    position: relative;
+}
+.product_names h3 {
+    white-space: nowrap; 
+}
+
+.product_names .price {
+    white-space: nowrap; 
+}
+.product_name::after {
+    content: "";
+    flex-grow: 1;
+    height: 3px;
+    
+    background: repeating-linear-gradient(
+        to right,
+        #fff,
+        #fff 2px,
+        transparent 2px,
+        transparent 4px
+    ); 
+}
+.loading_showing{
+    display: flex;
+    justify-content: center;
+}

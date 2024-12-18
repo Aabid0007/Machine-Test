@@ -1,0 +1,124 @@
+.form_section {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    position: absolute;
+}
+
+.AddForm {
+    width: 307px;
+    background-color: #fff;
+    padding: 7px 20px 35px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    z-index: 99;
+    color: black;
+
+}
+
+.form_heading h2 {
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+}
+
+.button.close_btn.close {
+    color: bl;
+}
+
+.form_heading {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.FormContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 27px;
+}
+
+.FormContent h4 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.inputBox {
+    height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 0 5px;
+}
+
+select#categoryId {
+    height: 32px;
+    font-size: 14px;
+    padding: 0 5px;
+}
+
+.btn {
+    padding: 14px 18px;
+    background-color: #1f1fda;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.btn.add {
+    padding: 14px 29px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.overlay {
+    background: rgba(5, 3, 16, 0.80);
+    min-height: 100vh;
+    min-width: 100vw;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+}
+
+.closeFrom {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close_btn {
+    border: none;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.close {
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.close_btn:hover {
+    background-color: red;
+    color: #fff;
+}
+
+.formSubmit {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}

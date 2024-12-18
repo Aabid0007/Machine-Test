@@ -5,11 +5,10 @@ const Category = require("../models/category.model")
 
 // Get all categories
 const getCategories = asyncHandler(async (req, res) => {
-    const categories = await Category.find();
-    
+    const categories = await Category.aggregate([{ $match: { isDeleted: false }}]);
     res.status(200).json({ 
         status: 'success', 
-        data: categories, 
+        data: categories.reverse(), 
         message: 'Categories retrieved successfully'
      });
 });
