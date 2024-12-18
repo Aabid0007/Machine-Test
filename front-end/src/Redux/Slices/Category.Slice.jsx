@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // get all category
 export const getCategories = createAsyncThunk('getCategory', async () => {
     try {
-        const response = await axios.get(`http://localhost:3001/api/category`);
+        const response = await axios.get(`https://deepnetsoft-06tq.onrender.com/api/category`);
         return response.data;
     } catch (error) {
         throw error;
@@ -14,7 +14,7 @@ export const getCategories = createAsyncThunk('getCategory', async () => {
 // create Category
 export const createCategory = createAsyncThunk('createCategory', async (data) => {
     try {
-        const response = await axios.post(`http://localhost:3001/api/category`, data);
+        const response = await axios.post(`https://deepnetsoft-06tq.onrender.com/api/category`, data);
         console.log(data,'hi');
         
         return response.data;
@@ -26,7 +26,7 @@ export const createCategory = createAsyncThunk('createCategory', async (data) =>
 // categoryId fetching
 export const getCategoryById = createAsyncThunk("getCategoryById", async (id) => {
     try {
-        const response = await axios.get(`http://localhost:3001/api/category/${id}`);
+        const response = await axios.get(`https://deepnetsoft-06tq.onrender.com/api/category/${id}`);
         return response.data;
     } catch (error) {
         throw error;
@@ -36,7 +36,7 @@ export const getCategoryById = createAsyncThunk("getCategoryById", async (id) =>
 // update Category
 export const editCategory = createAsyncThunk("editCategory", async ({ id, data }) => {
     try {
-        const response = await axios.put(`http://localhost:3001/api/category/${id}`, data);
+        const response = await axios.put(`https://deepnetsoft-06tq.onrender.com/api/category/${id}`, data);
         return response.data;
     } catch (error) {
         throw error;
@@ -46,7 +46,7 @@ export const editCategory = createAsyncThunk("editCategory", async ({ id, data }
 // Delete Category
 export const deleteCategory = createAsyncThunk("deleteCategory", async (id) => {
     try {
-        const response = await axios.delete(`http://localhost:3001/api/category/${id}`);
+        const response = await axios.delete(`https://deepnetsoft-06tq.onrender.com/api/category/${id}`);
         console.log(response.data);
         return id;
     } catch (error) {
