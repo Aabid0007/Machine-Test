@@ -1,119 +1,143 @@
+/* First break point */
+@media only screen and (max-width:1024px) {}
 
-
-/* Third break point */
-@media only screen and (max-width:1024px) {
-}
-/* Third break point */
+/* Second break point */
 @media only screen and (max-width:767px) {
-    .form_product_section{
+    .form_product_section {
         top: 94px;
         left: 0;
     }
+
     .btn.add {
         padding: 8px 20px;
     }
+
     .close {
         padding: 8px 20px;
         border-radius: 7px;
         font-size: 12px;
     }
+
     .btn {
         border-radius: 7px;
         font-size: 12px;
     }
-    .form_section{
+
+    .form_section {
         left: 0;
     }
+
     .DeleteForm {
         width: 306px;
         padding: 11px 17px 22px;
     }
+
     .deleteFormSection {
         gap: 8px;
     }
+
     .paragraph {
         font-size: 15px;
     }
+
     .btn {
         padding: 6px 14px;
         border-radius: 5px;
         font-size: 12px;
     }
-    .deleteHeading h2{
+
+    .deleteHeading h2 {
         font-size: 22px;
     }
 }
+
 /* Third break point */
 @media only screen and (max-width:420px) {
-.close {
-    padding: 2px 7px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-weight: 400;
-}
-.btn.add {
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-size: 10px;
-}
-.Add_product_Form {
-    width: 187px !important;
-   
-}
-.add_product_section{
-    padding: 7px 16px 15px !important;
-}
-.form_product_section{
-    top: 94px;
-    left: 0;
-}
-.close_btn {
-    padding: 2px 6px;
-    font-size: 10px;
-}
-.form_heading h2{
-    font-size: 22px;                
-}
-.form_heading {
-    padding-bottom: 7px;
-}
-.FormContent h4 {
-    font-size: 14px;
-}
-.FormContent {
-    gap: 5px;
-    padding-bottom: 19px;
-}
-.inputBox {
-    height: 22px;
-    font-size: 10px;
-}
-select#categoryId {
-    font-size: 10px;
-    height: 22px;
-}
-.form_section{
-    left: 0;
-}
-.DeleteForm {
-    width: 209px;
-    padding: 12px 11px 15px;
-}
-.deleteHeading h2{
-    font-size: 20px;
-    line-height: 20px;
-}
+    .close {
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: 400;
+    }
 
-.paragraph {
-    font-size: 10px;
-}
-.btn.delete {
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-size: 10px;
-}
-.deleteFormSection {
-    gap: 7px;
-}
+    .btn.add {
+        padding: 4px 10px;
+        border-radius: 5px;
+        font-size: 10px;
+    }
+
+    .Add_product_Form {
+        width: 187px !important;
+
+    }
+
+    .add_product_section {
+        padding: 7px 16px 15px !important;
+    }
+
+    .form_product_section {
+        top: 94px;
+        left: 0;
+    }
+
+    .close_btn {
+        padding: 2px 6px;
+        font-size: 10px;
+    }
+
+    .form_heading h2 {
+        font-size: 22px;
+    }
+
+    .form_heading {
+        padding-bottom: 7px;
+    }
+
+    .FormContent h4 {
+        font-size: 14px;
+    }
+
+    .FormContent {
+        gap: 5px;
+        padding-bottom: 19px;
+    }
+
+    .inputBox {
+        height: 22px;
+        font-size: 10px;
+    }
+
+    select#categoryId {
+        font-size: 10px;
+        height: 22px;
+    }
+
+    .form_section {
+        left: 0;
+    }
+
+    .DeleteForm {
+        width: 209px;
+        padding: 12px 11px 15px;
+    }
+
+    .deleteHeading h2 {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .paragraph {
+        font-size: 10px;
+    }
+
+    .btn.delete {
+        padding: 4px 10px;
+        border-radius: 5px;
+        font-size: 10px;
+    }
+
+    .deleteFormSection {
+        gap: 7px;
+    }
 
 }
