@@ -9,15 +9,20 @@ connectDb()
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors({ origin: 'https://deepnetsoft-backend-byf7.onrender.com' }));
+const allowedOrigins = ["https://contact-list-frontend.onrender.com"];
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true,
+}));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/category", require("./routes/category.route"));
 app.use("/api/products", require("./routes/product.route"));
 
-app.use(express.static(path.join(__dirname, 'build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
 
 
