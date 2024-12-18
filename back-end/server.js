@@ -9,7 +9,7 @@ connectDb()
 const app = express();
 const port = process.env.PORT || 3000;
 
-const allowedOrigins = ["https://deepnetsoft-backend-byf7.onrender.com"];
+const allowedOrigins = ["https://machine-test-urzl.onrender.com"];
 app.use(cors({
     origin: allowedOrigins,
     credentials: true,
@@ -29,6 +29,6 @@ app.get("*", (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`Server running on port ${port}`);
 });
