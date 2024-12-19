@@ -9,7 +9,11 @@ connectDb()
 const app = express();
 const port = process.env.PORT || 3000;
 
-const allowedOrigins = ["https://machine-test-urzl.onrender.com"];
+const allowedOrigins = [
+    'http://localhost:5173', 
+    'https://deepnetsoft-pug5.onrender.com' 
+];
+
 app.use(cors({
     origin: allowedOrigins,
     credentials: true,
