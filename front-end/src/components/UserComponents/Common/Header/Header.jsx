@@ -38,7 +38,7 @@ const Header = () => {
                           </ul>
                         </nav>
                         <button className='hamburger' onClick={toggleMenu}>
-                            <span class="material-symbols-outlined" >
+                            <span className="material-symbols-outlined" >
                                 {openMenu ? "close" : "menu"}
                             </span>
                         </button>

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 
 
 import './AddCategory.css'
+import { toast } from 'react-toastify';
 const AddCategory = ({ closeModal }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const AddCategory = ({ closeModal }) => {
         
         dispatch(getCategories());
         closeModal();
-        
+        toast.success('Category Created successfully!');
       })
       .catch((error) => {
         console.error("Error creating Category:", error);

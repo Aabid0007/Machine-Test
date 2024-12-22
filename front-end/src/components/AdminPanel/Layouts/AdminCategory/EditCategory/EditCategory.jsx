@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { editCategory, getCategories, getCategoryById } from '../../../../../Redux/Slices/Category.Slice';
 import { useDispatch } from 'react-redux';
 import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify';
 
 
 const EditCategory = ({ editModalClose, categoryId }) => {
@@ -35,6 +36,7 @@ const EditCategory = ({ editModalClose, categoryId }) => {
         await dispatch(editCategory({ id: categoryId, data: formData }));
         dispatch(getCategories());
         editModalClose();
+        toast.success('Category Updated successfully!');
         
       } catch (error) {
         console.error("Error updating Category:", error);

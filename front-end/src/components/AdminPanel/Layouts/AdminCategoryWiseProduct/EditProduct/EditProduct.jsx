@@ -39,7 +39,7 @@ const EditProduct = ({ editModalClose, productId }) => {
             categoryId: data.categoryId,
           };
           await dispatch(editProduct({ id: productId, data: formData }));
-          const result = await dispatch(getProducts({ categoryId }));
+          const result = await dispatch(getProducts(categoryId));
           console.log('Fetched products:', result); 
           editModalClose();
           

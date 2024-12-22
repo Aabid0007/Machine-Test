@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 // get all products
-export const getProducts = createAsyncThunk('getProducts', async ({ categoryId }) => {
+export const getProducts = createAsyncThunk('getProducts', async (categoryId) => {
     try {
         const response = await axios.get(`https://deepnetsoft-backend-byf7.onrender.com/api/products/?categoryId=${categoryId}`);
         return response.data.data;
@@ -61,20 +61,13 @@ const productSlice = createSlice({
         product: [],
         error: '',
         loading: false,
-        categoryId: '',
         productById: [],
-        searchQuery: '',
         categoryName: '',
     },
  
     reducers: {
-        updateCategoryId(state, action) {
-          state.categoryId = action.payload;
-        },
         updateCategoryName(state, action) {
-            state.categoryName = action.payload
-            console.log(state.categoryName);
-            
+            state.categoryName = action.payload;
         },
       },
     extraReducers: (builder) => {
@@ -86,7 +79,7 @@ const productSlice = createSlice({
         .addCase(getProducts.fulfilled, (state, action) => {
             state.loading = false;
             state.product = action.payload;
-            console.log('Products fetched:',state.product);
+            // console.log('Products fetched:',state.product);
         })
         .addCase(getProducts.rejected, (state, action) => {
             state.loading = false;
@@ -150,6 +143,7 @@ const productSlice = createSlice({
         })
     },
 });
+
 export const { updateCategoryName } = productSlice.actions;
-export const { updateCategoryId } = productSlice.actions;
+export const { setCategoryId } = productSlice.actions;
 export default productSlice.reducer;

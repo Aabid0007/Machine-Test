@@ -9,7 +9,7 @@ const DeleteProduct = ({ deleteModalClose, productId }) => {
     const deleteBtn = async () => {
         try {
             await dispatch(deleteProduct(productId));
-            dispatch(getProducts({categoryId}));
+            dispatch(getProducts(categoryId));
             deleteModalClose();
             
         } catch (error) {

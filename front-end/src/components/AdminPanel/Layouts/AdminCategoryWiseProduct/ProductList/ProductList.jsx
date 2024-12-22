@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useLocation } from 'react-router-dom'
-import { getProducts, updateCategoryId } from '../../../../../Redux/Slices/Product.Slice';
+import { getProducts } from '../../../../../Redux/Slices/Product.Slice';
 import AddProduct from '../AddProduct/AddProduct';
 import EditProduct from '../EditProduct/EditProduct';
 import DeleteProduct from '../DeleteProduct/DeleteProduct';
@@ -18,9 +18,8 @@ const ProductList = () => {
     const [productId, setProductId] = useState('');
 
     useEffect(() => {
-        if (!loading && categoryId && categoryId) {
-            dispatch(getProducts({ categoryId }));
-            dispatch(updateCategoryId(categoryId));
+        if (!loading && categoryId ) {
+            dispatch(getProducts(categoryId));
         }
     }, [dispatch, categoryId]);
 
@@ -41,7 +40,7 @@ const ProductList = () => {
                     <div className='contentHeading'>
                         <h3>Products</h3>
                     </div>
-                    <div className='addContactBtn'>
+                    <div className='addCategoryBtn'>
                         <button className='addBtn' onClick={() => setAddModal(true)}><span className="fa-solid fa-plus">
                         </span><h4>Add Product</h4></button>
                     </div>
@@ -67,18 +66,18 @@ const ProductList = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {product[0] && product?.map((product, index) => (
+                                {!loading && product[0] && product?.map((product, index) => (
                                     <tr key={product._id}>
                                         <td>{index + 1}</td>
                                         <td >{product.name}</td>
                                         <td>{product.description.length > 20 ? product.description.slice(0,20)+ ' ...': product.description}</td>
                                         <td>{'$' + product.price}</td>
                                         <td>
-                                            <div className='contact_action'>
-                                                <button className="contact_btn edit_btn" onClick={() => handleCategoryEditModal(product._id)} >
+                                            <div className='category_action'>
+                                                <button className="category_btn edit_btn" onClick={() => handleCategoryEditModal(product._id)} >
                                                     <span className="fa-solid fa-pen" />
                                                 </button>
-                                                <button className="contact_btn delete_btn" onClick={() => handleCategoryDeleteModal(product._id)}>
+                                                <button className="category_btn delete_btn" onClick={() => handleCategoryDeleteModal(product._id)}>
                                                     <span className="fa-regular fa-trash-can" />
                                                 </button>
                                             </div>
@@ -88,7 +87,7 @@ const ProductList = () => {
                             </tbody>
                         </table>
                     </div>
-                    {product?.length === 0 && <p className='NoProduct'>No Product found</p>}
+                    {!loading && product?.length === 0 && <p className='NoProduct'>No Product found</p>}
                     {
                         loading && <div className="loading"> Loading ... </div>
                     }
@@ -103,12 +102,6 @@ const ProductList = () => {
                     }
                     {
                         deleteModal && <DeleteProduct deleteModalClose={() => setDeleteModal(false)} productId={productId} />
-                    }
-                    {
-                        loading && <div className="loading"> Loading ... </div>
-                    }
-                    {
-                        error && <div className="error"> {error} </div>
                     }
                 </div>
             </div>

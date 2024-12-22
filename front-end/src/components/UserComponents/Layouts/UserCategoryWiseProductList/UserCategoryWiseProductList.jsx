@@ -1,24 +1,13 @@
 import React, { useEffect } from 'react';
 import LeftSideImg from '../../../../assets/image 39 (1) 1.png';
 import RightSideImg from '../../../../assets/cocktail1 1.png';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 
 import './UserCategoryWiseProductList.css';
-import { getProducts } from '../../../../Redux/Slices/Product.Slice';
 
 const UserCategoryWiseProductList = () => {
-    const dispatch = useDispatch();
 
-    const { product, loading, categoryId, categoryName } = useSelector((state) => state.product);
-
-    console.log(categoryId);
-
-    useEffect(() => {
-        if (!loading && categoryId) {
-            dispatch(getProducts({ categoryId }));
-        }
-    }, [dispatch, categoryId]);
-
+    const { product, loading, categoryName } = useSelector((state) => state.product);
 
     return (
         <div className='category_wise_product'>
@@ -36,10 +25,11 @@ const UserCategoryWiseProductList = () => {
                                 <h1>{categoryName ? categoryName + " COCKTAILS" : ``}</h1>
                             </div>
                             <div className="products">
-                                {product?.map((product) => (
+                                {!loading && product?.map((product) => (
                                     <div className='product_text' key={product._id}>
                                         <div className='product_names' >
                                             <div className='product_name'>
+                                                
                                                 <h3>{product.name} </h3>
                                             </div>
                                             <div> <span className="price">{`$` + product.price}</span></div>

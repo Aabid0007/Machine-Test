@@ -14,9 +14,7 @@ export const getCategories = createAsyncThunk('getCategory', async () => {
 // create Category
 export const createCategory = createAsyncThunk('createCategory', async (data) => {
     try {
-        const response = await axios.post(`https://deepnetsoft-backend-byf7.onrender.com/api/category`, data);
-        console.log(data,'hi');
-        
+        const response = await axios.post(`https://deepnetsoft-backend-byf7.onrender.com/api/category`, data);        
         return response.data;
     } catch (error) {
         throw error;

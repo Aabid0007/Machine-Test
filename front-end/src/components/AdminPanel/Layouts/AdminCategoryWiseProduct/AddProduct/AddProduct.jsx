@@ -35,7 +35,7 @@ const AddProduct = ({ closeModal }) => {
     
         dispatch(createProduct(formData))
             .then(() => {
-                dispatch(getProducts({ categoryId }));
+                dispatch(getProducts( categoryId ));
                 closeModal();
             })
             .catch((error) => {

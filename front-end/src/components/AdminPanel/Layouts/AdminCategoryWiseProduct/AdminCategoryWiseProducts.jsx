@@ -7,7 +7,7 @@ const AdminCategoryWiseProducts = () => {
 
     return (
         <div className="AdminPage">
-          
+
             <AdminHeader />
             <>
                 <ProductList />

@@ -1,22 +1,11 @@
-.page_content_section_table {
-    overflow-x: auto; 
-    display: block;
-}
-
-table {
-    min-width: 600px;
-}
-
-th, td {
-    white-space: nowrap;
-}
 
 .admin_category_section{
     min-height: 100vh;
 }
 .page_content_section_table {
-    display: grid;
-    padding-bottom:30px ;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
 }
 .categoryPage{
     padding: 20px 20px 60px;
@@ -31,22 +20,25 @@ th, td {
 }
 table {
     border-collapse: collapse;
+    width: 100%;
+    min-width: 600px;
 }
 th,td {
+    white-space: nowrap;
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-.contact_action{
+.category_action {
     display: flex;
     justify-content: space-evenly;
 }
-.contact_btn{
+.category_btn {
     border: none;
-    border-radius: 60px;
-    padding: 15px 17px;
-    
+    border-radius: 50px;
+    padding: 10px 12px;
+    font-size: 14px;
 }
 
 .edit_btn:hover{
@@ -65,7 +57,7 @@ th,td {
     gap: 10px;
     padding-top: 11px;
 }
-.addContactBtn{
+.addCategoryBtn{
     display: flex;
     justify-content: center;
   }
@@ -87,8 +79,8 @@ th,td {
     font-weight: 400;
     display: flex;
     justify-content: center;
-    position: absolute;
-    left: 500px;
+    color: red;
+  
   }
   .cursor_pointer{
     cursor: pointer;

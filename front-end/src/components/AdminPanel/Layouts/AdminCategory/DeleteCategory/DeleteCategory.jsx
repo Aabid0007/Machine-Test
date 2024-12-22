@@ -3,6 +3,7 @@ import React from 'react'
 import { deleteCategory, getCategories } from '../../../../../Redux/Slices/Category.Slice';
 import { useDispatch } from 'react-redux';
 import "./DeleteCategory.css"
+import { toast } from 'react-toastify';
 const DeleteCategory = ({ deleteModalClose, categoryId }) => {
     const dispatch = useDispatch();
 
@@ -11,7 +12,7 @@ const DeleteCategory = ({ deleteModalClose, categoryId }) => {
             await dispatch(deleteCategory(categoryId));
             dispatch(getCategories());
             deleteModalClose();
-            
+            toast.success('Category Deleted successfully!');
         } catch (error) {
             console.error("Error deleting Category:", error);
         }

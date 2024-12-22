@@ -17,7 +17,6 @@ const AdminCategory = () => {
   const dispatch = useDispatch();
   const { category, loading, error } = useSelector((state) => state.category);
   const navigate = useNavigate();
-  console.log(category);
 
 
   useEffect(() => {
@@ -44,7 +43,7 @@ const AdminCategory = () => {
           <div className='contentHeading'>
             <h3>Categories</h3>
           </div>
-          <div className='addContactBtn'>
+          <div className='addCategoryBtn'>
             <button className='addBtn' onClick={() => setAddModal(true)}><span className="fa-solid fa-plus">
             </span><h4>Add Category</h4></button>
           </div>
@@ -67,17 +66,17 @@ const AdminCategory = () => {
                 </tr>
               </thead>
               <tbody>
-                {category[0] && category?.map((categories, index) => (
+                {!loading && category[0] && category?.map((categories, index) => (
                   <tr key={categories._id}>
                     <td>{index + 1}</td>
                     <td className='cursor_pointer' onClick={() => handleCategoryClick(categories._id)}>{categories.name} <button>Items</button></td>
                     <td>{categories.description}</td>
                     <td>
-                      <div className='contact_action'>
-                        <button className="contact_btn edit_btn" onClick={() => handleCategoryEditModal(categories._id)} >
+                      <div className='category_action'>
+                        <button className="category_btn edit_btn" onClick={() => handleCategoryEditModal(categories._id)} >
                           <span className="fa-solid fa-pen" />
                         </button>
-                        <button className="contact_btn delete_btn" onClick={() => handleCategoryDeleteModal(categories._id)}>
+                        <button className="category_btn delete_btn" onClick={() => handleCategoryDeleteModal(categories._id)}>
                           <span className="fa-regular fa-trash-can" />
                         </button>
                       </div>

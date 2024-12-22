@@ -49,6 +49,38 @@
     .deleteHeading h2 {
         font-size: 22px;
     }
+    table {
+        min-width: unset;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .loading {
+        font-size: 16px;
+    }
+
+    .addBtn h4 {
+        font-size: 14px;
+    }
+    .Toastify__toast {
+        font-size: 14px !important; 
+    }
+
+    .Toastify__close-button {
+        font-size: 12px !important;
+    }
+    
+    .Toastify__toast-container.Toastify__toast-container--top-right {
+        width: 100%;
+        top: 5px;
+        padding: 0 10px;
+    }
+    .Toastify__toast-container--top-right {
+        right: 0 !important; 
+    }
 }
 
 /* Third break point */
@@ -64,6 +96,18 @@
         padding: 4px 10px;
         border-radius: 5px;
         font-size: 10px;
+    }
+    .addBtn {
+        flex-direction: column;
+        gap: 3px;
+        padding: 8px;
+    }
+    .addBtn h4 {
+        font-size: 10px;
+    }
+
+    .addBtn span {
+        font-size: 12px;
     }
 
     .Add_product_Form {
@@ -139,5 +183,26 @@
     .deleteFormSection {
         gap: 7px;
     }
+   
 
+}
+
+@media screen and (max-width: 480px) {
+    .Toastify__toast {
+        font-size: 12px !important;
+        padding: 10px !important;
+        border-radius: 5px !important;
+    }
+
+    .Toastify__toast-body {
+        word-wrap: break-word !important;
+    }
+
+    .Toastify__progress-bar {
+        height: 4px !important; 
+    }
+    .Toastify__toast-container.Toastify__toast-container--top-right {
+        top: 6px;
+    }
+   
 }
