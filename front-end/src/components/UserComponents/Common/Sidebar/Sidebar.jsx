@@ -25,7 +25,7 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
                             <li>MENU</li>
                             <li>MAKE A RESERVATION</li>
                             <li>CONTACT US</li>
-                            <li><button className='Admin_panel_btn' onClick={() => navigate('/admin')}> ADMIN PANEl</button></li>
+                            <li><button className='Admin_panel_btn' onClick={() => navigate('/admin')}> ADMIN PANEL</button></li>
                         </ul>
                     </nav>
                 </div>
