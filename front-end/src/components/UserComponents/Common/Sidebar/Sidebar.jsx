@@ -8,7 +8,7 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
     return (
         <>
             <div className={`mobile_menu ${isOpen ? "active" : ''}`} onClick={toggleMenu}>
-                <div className='mobile_menu_container'>
+                <div className='mobile_menu_container' onClick={(e) => e.stopPropagation()}>
                     <div className='contact_logo_text'>
                         <span className='logo_text'><span className='deep_name_color'>DEEP</span> NET <span className='soft_name_color'>SOFT</span></span>
                         <span className='contact_card_text icon'>
