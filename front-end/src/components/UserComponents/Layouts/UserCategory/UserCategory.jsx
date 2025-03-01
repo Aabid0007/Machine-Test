@@ -5,11 +5,12 @@ import './UserCategory.css';
 import {  getProducts, updateCategoryName } from '../../../../Redux/Slices/Product.Slice';
 
 const UserCategory = () => {
-  const { category, loading } = useSelector((state) => state.category);
+  const { category=[], loading } = useSelector((state) => state.category);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
   const visibleCount = 3;
   const dispatch = useDispatch();
+console.log(category);
 
   useEffect(() => {
     dispatch(getCategories())
@@ -52,7 +53,7 @@ const UserCategory = () => {
         <div className="category_section">
 
           {/* Previous Button */}
-          {category.length > visibleCount && (
+          {category?.length > visibleCount && (
             <button
               className="fa-solid fa-chevron-left category_slide_btn"
               onClick={handlePrev}
@@ -64,7 +65,7 @@ const UserCategory = () => {
 
             {/* Category List */}
             {!loading &&
-              category.slice(startIndex, startIndex + visibleCount).map((category) => (
+              category?.slice(startIndex, startIndex + visibleCount).map((category) => (
                 <span key={category._id}
                   onClick={() => {
                     handleCategoryClick(category._id, category.name)
@@ -75,7 +76,7 @@ const UserCategory = () => {
           </div>
 
           {/* Next Button */}
-          {category.length > visibleCount && (
+          {category?.length > visibleCount && (
             <button
               className="fa-solid fa-chevron-right category_slide_btn"
               onClick={handleNext}
