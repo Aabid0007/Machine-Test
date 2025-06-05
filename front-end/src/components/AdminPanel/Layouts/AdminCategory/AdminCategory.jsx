@@ -4,7 +4,6 @@ import EditCategory from './EditCategory/EditCategory';
 import DeleteCategory from './DeleteCategory/DeleteCategory';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../../../Redux/Slices/Category.Slice';
-
 import "./AdminCategory.css";
 import '../../Common/AdminMediaQuery.css'
 import { useNavigate } from 'react-router-dom';
@@ -20,9 +19,14 @@ const AdminCategory = () => {
 
 
   useEffect(() => {
+    console.log('category runing');
+    
     dispatch(getCategories())
   }, [dispatch]);
 
+  const handleCategoryClick = (categoryId) => {
+    navigate('/admin/category/product', { state: { categoryId } });
+};
   const handleCategoryEditModal = (categoryId) => {
     setCategoryId(categoryId);
     setEditModal(true);
@@ -32,9 +36,6 @@ const AdminCategory = () => {
     setCategoryId(categoryId);
     setDeleteModal(true);
   };
-  const handleCategoryClick = (categoryId) => {
-    navigate('/admin/category/product', { state: { categoryId } });
-};
 
   return (
     <div className="admin_category_section">
@@ -66,7 +67,7 @@ const AdminCategory = () => {
                 </tr>
               </thead>
               <tbody>
-                {!loading && category[0] && category?.map((categories, index) => (
+                {category[0] && category?.map((categories, index) => (
                   <tr key={categories._id}>
                     <td>{index + 1}</td>
                     <td className='cursor_pointer' onClick={() => handleCategoryClick(categories._id)}>{categories.name} <button>Items</button></td>

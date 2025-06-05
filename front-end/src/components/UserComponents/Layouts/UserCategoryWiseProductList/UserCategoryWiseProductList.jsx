@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import LeftSideImg from '../../../../assets/image 39 (1) 1.png';
 import RightSideImg from '../../../../assets/cocktail1 1.png';
 import {  useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import './UserCategoryWiseProductList.css';
 const UserCategoryWiseProductList = () => {
 
     const { product, loading, categoryName } = useSelector((state) => state.product);
+  const { category=[] } = useSelector((state) => state.category);
 
     return (
         <div className='category_wise_product'>
@@ -22,7 +23,7 @@ const UserCategoryWiseProductList = () => {
                                 <img src={LeftSideImg} alt="" />
                             </div>
                             <div className='heading'>
-                                <h1>{categoryName ? categoryName + " COCKTAILS" : ``}</h1>
+                                <h1>{categoryName ? categoryName + " COCKTAILS" : '\u00A0'}</h1>
                             </div>
                             <div className="products">
                                 {!loading && product?.map((product) => (
@@ -39,7 +40,10 @@ const UserCategoryWiseProductList = () => {
                                 ))}
                             </div>
                                 {
-                                    loading && <div className="loading_showing"> Loading ... </div>
+                                    (!category.length || loading) &&  <div className="loading_showing"> Loading ... </div>
+                                }
+                                {
+                                   category.length > 0 && product.length === 0 && !loading && <div className="no_product"> No Items Found </div>
                                 }
                             <div className='right_side_bottom_img'>
                                 <img src={RightSideImg} alt="" />

@@ -84,7 +84,7 @@ const categorySlice = createSlice({
             })
             .addCase(createCategory.fulfilled, (state, action) => {
                 state.loading = false;
-                state.category = action.payload.data;
+                state.category.push(action.payload.data);
             })
             .addCase(createCategory.rejected, (state, action) => {
                 state.loading = false;
@@ -97,9 +97,6 @@ const categorySlice = createSlice({
             })
 
             // update category
-            .addCase(editCategory.pending, (state) => {
-                state.loading = true;
-            })
             .addCase(editCategory.fulfilled, (state, action) => {
                 state.loading = false;
                 state.category = action.payload.data;
@@ -110,10 +107,6 @@ const categorySlice = createSlice({
             })
 
             // delete Category
-            .addCase(deleteCategory.pending, (state) => {
-                state.loading = true;
-                state.error = '';
-            })
             .addCase(deleteCategory.fulfilled, (state, action) => {
                 state.loading = false;
                 state.category = state.category.filter(category => category._id !== action.payload);

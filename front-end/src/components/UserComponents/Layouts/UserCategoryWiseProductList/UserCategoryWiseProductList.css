@@ -47,7 +47,6 @@
     padding: 70px 81px 99px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 44px;
     min-height:360px;
@@ -175,4 +174,7 @@
 .loading_showing{
     display: flex;
     justify-content: center;
+}
+.no_product{
+    color: red;
 }

@@ -63,6 +63,7 @@ const productSlice = createSlice({
         loading: false,
         productById: [],
         categoryName: '',
+        categoryId: '',
     },
  
     reducers: {

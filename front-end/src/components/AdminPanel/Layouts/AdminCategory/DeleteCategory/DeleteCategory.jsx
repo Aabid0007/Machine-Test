@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { deleteCategory, getCategories } from '../../../../../Redux/Slices/Category.Slice';
 import { useDispatch } from 'react-redux';
 import "./DeleteCategory.css"

@@ -78,9 +78,7 @@ th,td {
     font-size: 18px;
     font-weight: 400;
     display: flex;
-    justify-content: center;
-    color: red;
-  
+    justify-content: center;  
   }
   .cursor_pointer{
     cursor: pointer;

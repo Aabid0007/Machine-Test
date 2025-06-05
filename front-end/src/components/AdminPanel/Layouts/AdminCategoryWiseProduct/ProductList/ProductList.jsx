@@ -8,20 +8,23 @@ import EditProduct from '../EditProduct/EditProduct';
 import DeleteProduct from '../DeleteProduct/DeleteProduct';
 
 const ProductList = () => {
-    const location = useLocation();
-    const dispatch = useDispatch();
-    const categoryId = location.state?.categoryId;
+    
     const { product, loading, error } = useSelector((state) => state.product);
     const [addModal, setAddModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
     const [productId, setProductId] = useState('');
+    const location = useLocation();
+    const dispatch = useDispatch();
+    const categoryId = location.state?.categoryId;    
+   useEffect(() => {
+    if (categoryId) {
+        console.log("Fetching products for categoryId:", categoryId);
+        dispatch(getProducts(categoryId));
+    }
+}, [dispatch, categoryId]);
+    console.log(categoryId);
 
-    useEffect(() => {
-        if (!loading && categoryId ) {
-            dispatch(getProducts(categoryId));
-        }
-    }, [dispatch, categoryId]);
 
     const handleCategoryEditModal = (productId) => {
         setProductId(productId);

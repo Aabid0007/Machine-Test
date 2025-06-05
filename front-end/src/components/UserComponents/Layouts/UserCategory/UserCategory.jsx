@@ -2,21 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { getCategories } from '../../../../Redux/Slices/Category.Slice';
 import { useDispatch, useSelector } from 'react-redux';
 import './UserCategory.css';
-import {  getProducts, updateCategoryName } from '../../../../Redux/Slices/Product.Slice';
+import { getProducts, updateCategoryName } from '../../../../Redux/Slices/Product.Slice';
 
 const UserCategory = () => {
-  const { category=[], loading } = useSelector((state) => state.category);
+  const { category = [], loading } = useSelector((state) => state.category);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
   const visibleCount = 3;
   const dispatch = useDispatch();
-console.log(category);
 
   useEffect(() => {
     dispatch(getCategories())
   }, [dispatch]);
 
-  
+
   useEffect(() => {
     if (category.length > 0 && !selectedCategoryId) {
       const { _id, name } = category[0];
@@ -24,6 +23,7 @@ console.log(category);
       dispatch(getProducts(_id));
       dispatch(updateCategoryName(name));
     }
+
   }, [category, selectedCategoryId, dispatch]);
 
 
@@ -61,7 +61,8 @@ console.log(category);
             >
             </button>
           )}
-          <div className='category_card'>
+          <div
+            className="category_card">
 
             {/* Category List */}
             {!loading &&
@@ -85,7 +86,10 @@ console.log(category);
             </button>
           )}
           {
-            loading && <div className="loading"> Loading... </div>
+            loading && <div className="loading"  {...(loading ? { style: { padding: "19px 25px" } } : {})}> Loading... </div>
+          }
+          {
+            category.length === 0 && !loading && <div className="no_category"> No Categories Found </div>
           }
         </div>
       </div>

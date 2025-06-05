@@ -6,9 +6,9 @@ import { getCategories } from '../../../../../Redux/Slices/Category.Slice';
 import './AddProduct.css'
 
 const AddProduct = ({ closeModal }) => {
-
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const { category } = useSelector((state) => state.category);
+     const { loading } = useSelector((state) => state.product);
     const dispatch = useDispatch();
     const { categoryId } = useSelector((state) => state.product);
 
@@ -35,7 +35,7 @@ const AddProduct = ({ closeModal }) => {
     
         dispatch(createProduct(formData))
             .then(() => {
-                dispatch(getProducts( categoryId ));
+                dispatch(getProducts(data.categoryId));
                 closeModal();
             })
             .catch((error) => {
@@ -99,6 +99,7 @@ const AddProduct = ({ closeModal }) => {
                                     })}
                                 />
                                 <p className='error'>{errors.price?.message}</p>
+
                                 <label htmlFor="category">
                                     <h4>Category:</h4>
                                 </label>
@@ -106,16 +107,17 @@ const AddProduct = ({ closeModal }) => {
                                     {...register("categoryId", {
                                         required: "category is required",
                                     })} >
-                                    <option className='select_placeholder' placeholder>Select category</option>
+                                    <option className='select_placeholder' value='' disabled >Select category</option>
                                     {category?.map((category) => (
                                         <option key={category._id} value={category._id}>{category.name}</option>
                                     ))}
                                 </select>
                                 <p className='error'>{errors.categoryId?.message}</p>
                             </div>
+
                             <div className='formSubmit'>
                                 <button className='close_btn close' onClick={closeModal}>Cancel</button>
-                                <button type="submit" className="btn add" > Submit</button>
+                                <button type="submit" className="btn add" disabled={loading} >Submit</button>
                             </div>
                         </form>
                     </div>
