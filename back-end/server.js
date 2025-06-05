@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 const allowedOrigins = [
     'http://localhost:5173', 
-    'https://machine-test-urzl.onrender.com' 
+    'https://deepnetsoft-0twc.onrender.com' 
 ];
 
 app.use(cors({
