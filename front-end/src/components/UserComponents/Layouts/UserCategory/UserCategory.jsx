@@ -67,11 +67,11 @@ const UserCategory = () => {
             {/* Category List */}
             {!loading &&
               categories?.slice(startIndex, startIndex + visibleCount).map((category) => (
-                <span key={category._id}
+                <span key={category._id}  
                   onClick={() => {
                     handleCategoryClick(category._id, category.name)
                   }}
-                  className={selectedCategoryId === category._id ? 'active_category' : ''}
+                  className={selectedCategoryId === category._id ? 'active_category cursor_pointer' : 'cursor_pointer'}
                 >{category.name}</span>
               ))}
           </div>

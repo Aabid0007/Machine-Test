@@ -45,8 +45,7 @@ export const editCategory = createAsyncThunk("editCategory", async ({ id, data }
 // Delete Category
 export const deleteCategory = createAsyncThunk("deleteCategory", async (id) => {
     try {
-        const response = await axios.delete(`https://deepnetsoft-backend-byf7.onrender.com/api/category/${id}`);
-        console.log(response.data);
+        await axios.delete(`https://deepnetsoft-backend-byf7.onrender.com/api/category/${id}`);
         return id;
     } catch (error) {
         throw error

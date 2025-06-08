@@ -7,7 +7,7 @@ import './UserCategoryWiseProductList.css';
 
 const UserCategoryWiseProductList = () => {
 
-    const { products, loading, categoryName } = useSelector((state) => state.product);
+    const { products, loadingList, categoryName } = useSelector((state) => state.product);
   const { categories=[] } = useSelector((state) => state.category);
 
     return (
@@ -26,7 +26,7 @@ const UserCategoryWiseProductList = () => {
                                 <h1>{categoryName ? categoryName + " COCKTAILS" : '\u00A0'}</h1>
                             </div>
                             <div className="products">
-                                {!loading && products?.map((product) => (
+                                {!loadingList && products?.map((product) => (
                                     <div className='product_text' key={product._id}>
                                         <div className='product_names' >
                                             <div className='product_name'>
@@ -40,10 +40,10 @@ const UserCategoryWiseProductList = () => {
                                 ))}
                             </div>
                                 {
-                                    (!categories.length || loading) &&  <div className="loading_showing"> Loading ... </div>
+                                    (!categories.length || loadingList) &&  <div className="loading_showing"> Loading ... </div>
                                 }
                                 {
-                                   categories.length > 0 && products.length === 0 && !loading && <div className="no_product"> No Items Found </div>
+                                   categories.length > 0 && products.length === 0 && !loadingList && <div className="no_product"> No Items Found </div>
                                 }
                             <div className='right_side_bottom_img'>
                                 <img src={RightSideImg} alt="" />
