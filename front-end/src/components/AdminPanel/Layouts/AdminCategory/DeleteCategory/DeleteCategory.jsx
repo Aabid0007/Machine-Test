@@ -1,5 +1,5 @@
 import React from 'react'
-import { deleteCategory, getCategories } from '../../../../../Redux/Slices/Category.Slice';
+import { deleteCategory } from '../../../../../Redux/Slices/Category.Slice';
 import { useDispatch } from 'react-redux';
 import "./DeleteCategory.css"
 import { toast } from 'react-toastify';
@@ -8,8 +8,7 @@ const DeleteCategory = ({ deleteModalClose, categoryId }) => {
 
     const deleteBtn = async () => {
         try {
-            await dispatch(deleteCategory(categoryId));
-            dispatch(getCategories());
+            await dispatch(deleteCategory(categoryId)).unwrap();;
             deleteModalClose();
             toast.success('Category Deleted successfully!');
         } catch (error) {

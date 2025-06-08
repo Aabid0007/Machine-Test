@@ -15,7 +15,7 @@ export const getCategories = createAsyncThunk('getCategory', async () => {
 // create Category
 export const createCategory = createAsyncThunk('createCategory', async (data) => {
     try {
-        const response = await axios.post(`https://deepnetsoft-backend-byf7.onrender.com/api/category`, data);        
+        const response = await axios.post(`https://deepnetsoft-backend-byf7.onrender.com/api/category`, data);
         return response.data;
     } catch (error) {
         throw error;
@@ -58,7 +58,7 @@ export const deleteCategory = createAsyncThunk("deleteCategory", async (id) => {
 const categorySlice = createSlice({
     name: 'category',
     initialState: {
-        category: [],
+        categories: [],
         error: '',
         loading: false,
     },
@@ -71,7 +71,7 @@ const categorySlice = createSlice({
             })
             .addCase(getCategories.fulfilled, (state, action) => {
                 state.loading = false;
-                state.category = action.payload.data;
+                state.categories = action.payload.data;
             })
             .addCase(getCategories.rejected, (state, action) => {
                 state.loading = false;
@@ -81,35 +81,48 @@ const categorySlice = createSlice({
             // create Category
             .addCase(createCategory.pending, (state) => {
                 state.loading = true;
+                 state.error = '';
             })
             .addCase(createCategory.fulfilled, (state, action) => {
                 state.loading = false;
-                state.category.push(action.payload.data);
+                state.categories.unshift(action.payload.data);
             })
             .addCase(createCategory.rejected, (state, action) => {
                 state.loading = false;
                 state.error = "Some error occurred";
             })
 
-            // Category Id fetching
+            // get category by ID
+            .addCase(getCategoryById.pending, (state) => {
+                state.loading = true;
+                state.error = '';
+            })
             .addCase(getCategoryById.fulfilled, (state, action) => {
                 state.loading = false;
             })
+            .addCase(getCategoryById.rejected, (state, action) => {
+                state.loading = false;
+                state.error = "Something went wrong";
+            })
+
 
             // update category
             .addCase(editCategory.fulfilled, (state, action) => {
                 state.loading = false;
-                state.category = action.payload.data;
+                state.categories = state.categories.map(cat =>
+                    cat._id === action.payload.data._id ? action.payload.data : cat
+                );
             })
             .addCase(editCategory.rejected, (state, action) => {
                 state.loading = false;
                 state.error = "Some error occurred";
             })
 
+            
             // delete Category
             .addCase(deleteCategory.fulfilled, (state, action) => {
                 state.loading = false;
-                state.category = state.category.filter(category => category._id !== action.payload);
+                state.categories = state.categories.filter(category => category._id !== action.payload);
             })
             .addCase(deleteCategory.rejected, (state, action) => {
                 state.loading = false;

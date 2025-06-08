@@ -1,5 +1,5 @@
 import React from 'react'
-import { createCategory, getCategories } from '../../../../../Redux/Slices/Category.Slice';
+import { createCategory } from '../../../../../Redux/Slices/Category.Slice';
 import { useDispatch } from 'react-redux';
 import { useForm } from "react-hook-form"
 import './AddCategory.css'
@@ -23,7 +23,6 @@ const AddCategory = ({ closeModal }) => {
       toast.error("Failed to create category");
     }
   };
-
 
   return (
     <div className='form_product_section'>

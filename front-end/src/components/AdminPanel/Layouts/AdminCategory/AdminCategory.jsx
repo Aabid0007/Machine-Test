@@ -14,19 +14,17 @@ const AdminCategory = () => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [categoryId, setCategoryId] = useState('');
   const dispatch = useDispatch();
-  const { category, loading, error } = useSelector((state) => state.category);
+  const { categories, loading, error } = useSelector((state) => state.category);
   const navigate = useNavigate();
 
 
   useEffect(() => {
-    console.log('category runing');
-    
     dispatch(getCategories())
   }, [dispatch]);
 
   const handleCategoryClick = (categoryId) => {
-    navigate('/admin/category/product', { state: { categoryId } });
-};
+    navigate(`/admin/category/${categoryId}/products`);
+  };
   const handleCategoryEditModal = (categoryId) => {
     setCategoryId(categoryId);
     setEditModal(true);
@@ -45,8 +43,10 @@ const AdminCategory = () => {
             <h3>Categories</h3>
           </div>
           <div className='addCategoryBtn'>
-            <button className='addBtn' onClick={() => setAddModal(true)}><span className="fa-solid fa-plus">
-            </span><h4>Add Category</h4></button>
+            <button className='addBtn' onClick={() => setAddModal(true)}>
+              <span className="fa-solid fa-plus"></span>
+              <h4>Add Category</h4>
+            </button>
           </div>
           <div className='page_content_section_table'>
             <table>
@@ -67,17 +67,22 @@ const AdminCategory = () => {
                 </tr>
               </thead>
               <tbody>
-                {category[0] && category?.map((categories, index) => (
-                  <tr key={categories._id}>
+                {categories[0] && categories?.map((category, index) => (
+                  <tr key={category._id}>
                     <td>{index + 1}</td>
-                    <td className='cursor_pointer' onClick={() => handleCategoryClick(categories._id)}>{categories.name} <button>Items</button></td>
-                    <td>{categories.description}</td>
+                    <td className='cursor_pointer' onClick={() => handleCategoryClick(category._id)}>
+                      <div className='items_btn'>
+                        {category.name}
+                      <button className='cursor_pointer'>Items</button>
+                      </div>
+                    </td>
+                    <td>{category.description}</td>
                     <td>
                       <div className='category_action'>
-                        <button className="category_btn edit_btn" onClick={() => handleCategoryEditModal(categories._id)} >
+                        <button className="category_btn edit_btn" onClick={() => handleCategoryEditModal(category._id)} >
                           <span className="fa-solid fa-pen" />
                         </button>
-                        <button className="category_btn delete_btn" onClick={() => handleCategoryDeleteModal(categories._id)}>
+                        <button className="category_btn delete_btn" onClick={() => handleCategoryDeleteModal(category._id)}>
                           <span className="fa-regular fa-trash-can" />
                         </button>
                       </div>
@@ -88,7 +93,10 @@ const AdminCategory = () => {
             </table>
           </div>
           {
-            loading && <div className="loading"> Loading ... </div>
+            !loading && categories?.length === 0 && <div className='NoProduct'>No Category found</div>
+          }
+          {
+            !categories.length && loading && <div className="loading"> Loading ... </div>
           }
           {
             error && <div className="error"> {error} </div>

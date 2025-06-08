@@ -1,18 +1,17 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteProduct, getProducts } from '../../../../../Redux/Slices/Product.Slice';
+import { useDispatch } from 'react-redux';
+import { deleteProduct } from '../../../../../Redux/Slices/Product.Slice';
+import { toast } from 'react-toastify';
 
 const DeleteProduct = ({ deleteModalClose, productId }) => {
-    const {categoryId} = useSelector((state) => state.product);
+
     const dispatch = useDispatch();
 
     const deleteBtn = async () => {
         try {
-            await dispatch(deleteProduct(productId)).unwrap(); 
-            console.log({categoryId});
-            
-            dispatch(getProducts({categoryId})); 
+            await dispatch(deleteProduct(productId)).unwrap();             
             deleteModalClose();
+             toast.success('Item Deleted successfully!');
         } catch (error) {
             console.error("Error deleting Category:", error);
         }

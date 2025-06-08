@@ -71,6 +71,10 @@ select#categoryId {
     font-weight: 400;
     cursor: pointer;
 }
+.btn:hover {
+    background-color: #0f0f9a;
+    color: #fff;
+}
 
 .btn.add {
     padding: 14px 29px;

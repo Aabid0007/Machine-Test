@@ -9,7 +9,7 @@ const MainRouter = () => {
     <Routes>
         <Route path='/' element={<UserMainLayouts />}/>
         <Route path='/admin' element={<AdminLayouts />}/>
-        <Route path='/admin/category/product' element={<AdminCategoryWiseProducts />}/>
+        <Route path="/admin/category/:categoryId/products" element={<AdminCategoryWiseProducts />}/>
     </Routes>
     </>
   )

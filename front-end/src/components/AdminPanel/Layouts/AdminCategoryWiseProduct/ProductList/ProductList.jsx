@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getProducts } from '../../../../../Redux/Slices/Product.Slice';
 import AddProduct from '../AddProduct/AddProduct';
 import EditProduct from '../EditProduct/EditProduct';
 import DeleteProduct from '../DeleteProduct/DeleteProduct';
 
 const ProductList = () => {
-    
-    const { product, loading, error } = useSelector((state) => state.product);
+    const { products,loadingList, error } = useSelector((state) => state.product);
     const [addModal, setAddModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
     const [productId, setProductId] = useState('');
-    const location = useLocation();
     const dispatch = useDispatch();
-    const categoryId = location.state?.categoryId;    
-   useEffect(() => {
-    if (categoryId) {
-        console.log("Fetching products for categoryId:", categoryId);
-        dispatch(getProducts(categoryId));
-    }
-}, [dispatch, categoryId]);
-    console.log(categoryId);
+    const { categoryId } = useParams();
+
+    useEffect(() => {
+        if (categoryId) {
+            dispatch(getProducts(categoryId));
+        }
+    }, [dispatch, categoryId ]);
 
 
     const handleCategoryEditModal = (productId) => {
@@ -35,6 +32,10 @@ const ProductList = () => {
         setProductId(productId);
         setDeleteModal(true);
     };
+    
+if (loadingList) {
+    return <div className="loading">Loading...</div>
+  }
 
     return (
         <div className="admin_category_section">
@@ -69,11 +70,11 @@ const ProductList = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {!loading && product[0] && product?.map((product, index) => (
+                                {products[0] && products?.map((product, index) => (
                                     <tr key={product._id}>
                                         <td>{index + 1}</td>
                                         <td >{product.name}</td>
-                                        <td>{product.description.length > 20 ? product.description.slice(0,20)+ ' ...': product.description}</td>
+                                        <td>{product.description.length > 20 ? product.description.slice(0, 20) + ' ...' : product.description}</td>
                                         <td>{'$' + product.price}</td>
                                         <td>
                                             <div className='category_action'>
@@ -90,18 +91,22 @@ const ProductList = () => {
                             </tbody>
                         </table>
                     </div>
-                    {!loading && product?.length === 0 && <p className='NoProduct'>No Product found</p>}
+                    {!loadingList && products?.length === 0 && <div className='NoProduct'>No Items found</div>}
                     {
-                        loading && <div className="loading"> Loading ... </div>
+                        !products.length && loadingList && <div className="loading"> Loading ... </div>
                     }
                     {
                         error && <div className="error"> {error} </div>
                     }
                     {
-                        addModal && <AddProduct closeModal={() => setAddModal(false)} />
+                        addModal && <AddProduct closeModal={() => setAddModal(false)} categoryId={categoryId} />
                     }
                     {
-                        editModal && <EditProduct editModalClose={() => setEditModal(false)} productId={productId} />
+                        editModal && <EditProduct editModalClose={() =>
+                            setEditModal(false)}
+                            productId={productId}
+                            categoryId={categoryId}
+                        />
                     }
                     {
                         deleteModal && <DeleteProduct deleteModalClose={() => setDeleteModal(false)} productId={productId} />

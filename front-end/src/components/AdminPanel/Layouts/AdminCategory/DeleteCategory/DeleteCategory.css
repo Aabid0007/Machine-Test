@@ -16,6 +16,10 @@
 .btn.delete{
     background-color: red;
 }
+.btn.delete:hover{
+    background-color: darkred;
+    color: #fff;
+}
 .paragraph{
     font-size: 18px;
     font-weight: 400;

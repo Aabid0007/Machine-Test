@@ -6,7 +6,7 @@ import axios from "axios";
 export const getProducts = createAsyncThunk('getProducts', async (categoryId) => {
     try {
         const response = await axios.get(`https://deepnetsoft-backend-byf7.onrender.com/api/products/?categoryId=${categoryId}`);
-        return response.data.data;
+        return response.data;
     } catch (error) {
         throw error;
     }
@@ -45,8 +45,7 @@ export const editProduct = createAsyncThunk("editProduct", async ({ id, data }) 
 // Delete product
 export const deleteProduct = createAsyncThunk("deleteProduct", async (id) => {
     try {
-        const response = await axios.delete(`https://deepnetsoft-backend-byf7.onrender.com/api/products/${id}`);
-        console.log(response.data);
+        await axios.delete(`https://deepnetsoft-backend-byf7.onrender.com/api/products/${id}`);
         return id;
     } catch (error) {
         throw error
@@ -58,93 +57,87 @@ export const deleteProduct = createAsyncThunk("deleteProduct", async (id) => {
 const productSlice = createSlice({
     name: 'product',
     initialState: {
-        product: [],
+        products: [],
         error: '',
         loading: false,
-        productById: [],
+        loadingList: false,
         categoryName: '',
-        categoryId: '',
     },
- 
+
     reducers: {
         updateCategoryName(state, action) {
             state.categoryName = action.payload;
         },
-      },
+    },
     extraReducers: (builder) => {
         builder
-        .addCase(getProducts.pending, (state) => {
-            state.loading = true;
-            state.error = '';
-        })
-        .addCase(getProducts.fulfilled, (state, action) => {
-            state.loading = false;
-            state.product = action.payload;
-            // console.log('Products fetched:',state.product);
-        })
-        .addCase(getProducts.rejected, (state, action) => {
-            state.loading = false;
-            state.error = action.error.message || "Some error occurred";
-        })
+            .addCase(getProducts.pending, (state) => {
+                state.loadingList = true;
+                state.error = '';
+            })
+            .addCase(getProducts.fulfilled, (state, action) => {
+               state.loadingList = false;
+                state.products = action.payload.data;
+                // console.log('Products fetched:',state.product);
+            })
+            .addCase(getProducts.rejected, (state, action) => {
+                state.loadingList = true;
+                state.error = action.error.message || "Some error occurred";
+            })
 
-        // create Category
-        .addCase(createProduct.pending, (state) => {
-            state.loading = true;
-            state.error = '';
-        })
-        .addCase(createProduct.fulfilled, (state, action) => {
-            state.loading = false;
-            state.product = action.payload;
-        })
-        .addCase(createProduct.rejected, (state, action) => {
-            state.loading = false;
-            state.error = "Some error occurred";
-        })
+            // create Category
+            .addCase(createProduct.pending, (state) => {
+                state.loading = true;
+                state.error = '';
+            })
+            .addCase(createProduct.fulfilled, (state, action) => {
+                state.loading = false;
+            })
+            .addCase(createProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = "Some error occurred";
+            })
 
-        // product Id fetching
-        .addCase(getProductById.fulfilled, (state, action) => {
-            state.loading = false;
-            state.productById = action.payload.data;
-        })
-        .addCase(getProductById.pending, (state, action) => {
-           state.loading = true;
-        })
+            // get product by ID
+            .addCase(getProductById.pending, (state, action) => {
+                state.loading = true;
+                state.error = '';
+            })
+            .addCase(getProductById.fulfilled, (state, action) => {
+                state.loading = false;
+            })
+            .addCase(getProductById.rejected, (state, action) => {
+                state.loading = false;
+                state.error = "Something went wrong";
+            })
 
-        // update product
-        .addCase(editProduct.pending, (state) => {
-            state.loading = true;
-            state.error = '';
-        })
-        .addCase(editProduct.fulfilled, (state, action) => {
-            state.loading = false;
-            state.product = action.payload;
-           
-            // state.product =  state.product.map((products)=> (
-            //     products._id === action.payload.id ? action.payload : products
-            // ))
-            console.log(state.product, "redux editing");
-        })
-        .addCase(editProduct.rejected, (state, action) => {
-            state.loading = false;
-            state.error = "Some error occurred";
-        })
+            // update product
+            .addCase(editProduct.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products = state.products.map(product =>
+                    product._id === action.payload.data._id ? action.payload.data : product
+                )
+            })
+            .addCase(editProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = "Some error occurred";
+            })
 
-        // delete product
-        .addCase(deleteProduct.pending, (state) => {
-            state.loading = true;
-            state.error = '';
-        })
-        .addCase(deleteProduct.fulfilled, (state, action) => {
-            state.loading = false;
-            state.product = state.product.filter(product => product._id !== action.payload);
-        })
-        .addCase(deleteProduct.rejected, (state, action) => {
-            state.loading = false;
-            state.error = "Some error occurred";
-        })
+            // delete product
+            .addCase(deleteProduct.pending, (state) => {
+                state.loading = true;
+                state.error = '';
+            })
+            .addCase(deleteProduct.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products = state.products.filter(product => product._id !== action.payload);
+            })
+            .addCase(deleteProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = "Some error occurred";
+            })
     },
 });
 
 export const { updateCategoryName } = productSlice.actions;
-export const { setCategoryId } = productSlice.actions;
 export default productSlice.reducer;

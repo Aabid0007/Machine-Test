@@ -82,4 +82,11 @@ th,td {
   }
   .cursor_pointer{
     cursor: pointer;
+    
+  }
+  .items_btn{
+cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }

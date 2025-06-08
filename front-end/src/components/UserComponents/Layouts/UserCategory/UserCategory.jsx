@@ -5,7 +5,7 @@ import './UserCategory.css';
 import { getProducts, updateCategoryName } from '../../../../Redux/Slices/Product.Slice';
 
 const UserCategory = () => {
-  const { category = [], loading } = useSelector((state) => state.category);
+  const { categories = [], loading } = useSelector((state) => state.category);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
   const visibleCount = 3;
@@ -17,14 +17,14 @@ const UserCategory = () => {
 
 
   useEffect(() => {
-    if (category.length > 0 && !selectedCategoryId) {
-      const { _id, name } = category[0];
+    if (categories.length > 0 && !selectedCategoryId) {
+      const { _id, name } = categories[0];
       setSelectedCategoryId(_id);
       dispatch(getProducts(_id));
       dispatch(updateCategoryName(name));
     }
 
-  }, [category, selectedCategoryId, dispatch]);
+  }, [categories, selectedCategoryId, dispatch]);
 
 
   const handleCategoryClick = (categoryId, categoryName) => {
@@ -35,7 +35,7 @@ const UserCategory = () => {
 
 
   const handleNext = () => {
-    if (startIndex < category.length - 1) {
+    if (startIndex < categories.length - 1) {
       setStartIndex(startIndex + 1);
     }
   };
@@ -53,7 +53,7 @@ const UserCategory = () => {
         <div className="category_section">
 
           {/* Previous Button */}
-          {category?.length > visibleCount && (
+          {categories?.length > visibleCount && (
             <button
               className="fa-solid fa-chevron-left category_slide_btn"
               onClick={handlePrev}
@@ -66,7 +66,7 @@ const UserCategory = () => {
 
             {/* Category List */}
             {!loading &&
-              category?.slice(startIndex, startIndex + visibleCount).map((category) => (
+              categories?.slice(startIndex, startIndex + visibleCount).map((category) => (
                 <span key={category._id}
                   onClick={() => {
                     handleCategoryClick(category._id, category.name)
@@ -77,11 +77,11 @@ const UserCategory = () => {
           </div>
 
           {/* Next Button */}
-          {category?.length > visibleCount && (
+          {categories?.length > visibleCount && (
             <button
               className="fa-solid fa-chevron-right category_slide_btn"
               onClick={handleNext}
-              disabled={startIndex + visibleCount >= category.length}
+              disabled={startIndex + visibleCount >= categories.length}
             >
             </button>
           )}
@@ -89,7 +89,7 @@ const UserCategory = () => {
             loading && <div className="loading"  {...(loading ? { style: { padding: "19px 25px" } } : {})}> Loading... </div>
           }
           {
-            category.length === 0 && !loading && <div className="no_category"> No Categories Found </div>
+            categories.length === 0 && !loading && <div className="no_category"> No Categories Found </div>
           }
         </div>
       </div>
